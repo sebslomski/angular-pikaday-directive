@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="PikadayExampleApp">
+    <head>
+        <title>Angular Pikaday Directive</title>
+        <link rel="stylesheet" href="bower_components/pikaday/css/pikaday.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+        <script src="bower_components/pikaday/pikaday.js"></script>
+        <script src="pikaday-directive.js"></script>
+        <script>
+            angular.module('PikadayExampleApp', ['pikaday'])
+
+            .controller('MainCtrl', function($scope) {
+                $scope.date = new Date();
+                $scope.uiConfig = {
+                    pikaday: {
+                        firstDay: 1
+                    }
+                };
+            });
+        </script>
+    </head>
+    <body ng-controller="MainCtrl">
+        <h1>Angular Pikaday Directive</h1>
+
+        <button pikaday="uiConfig.pikaday" ng-model="date">{{ date | date:'yyyy-MM-dd' }}</button>
+
+        <input pikaday ng-model="date">
+
+        <p>Date: {{ date | date:'yyyy-MM-dd' }}</p>
+    </body>
+</html>
