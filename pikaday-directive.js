@@ -20,7 +20,7 @@ angular.module('pikaday', [])
             var onSelect = options.onSelect;
 
             options.onSelect = function(date) {
-                $scope.date = date;
+                $scope.date = this.toString();
                 $scope.$apply($scope.date);
 
                 if (angular.isFunction(onSelect)) {
